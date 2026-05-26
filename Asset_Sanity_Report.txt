@@ -1,0 +1,5 @@
+Scene phang sach khong chua drone/thuc the dong: True
+Gioi han da giac mo hinh duoi 50.000: True
+Khong chua vat lieu Transparent sai quy dinh: False
+Project Settings khoa cung o Linear Color Space: True
+Tong so lenh goi ve (Batches) duoi 500: True (Hien tai: 0)
