@@ -9513,7 +9513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8fb4ef48c157214bb59d8e6392c8557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UAVController
-  moveForce: 150
+  moveForce: 600
   rotationSpeed: 15
   dragBase: 4
   visualModel: {fileID: 0}
@@ -21963,7 +21963,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 19fb3263f4393e44499ae7abd7ccbc9f, type: 2}
     - target: {fileID: 7231887364440564934, guid: c53e58c59cba20e4ab6f2080fbdafb5f, type: 3}
       propertyPath: m_Name
-      value: drone Black
+      value: UAV
       objectReference: {fileID: 0}
     - target: {fileID: 8004870786121596540, guid: c53e58c59cba20e4ab6f2080fbdafb5f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31808,7 +31808,7 @@ MonoBehaviour:
       data:
         enabled: 1
         annotationId: semantic segmentation
-        labelConfig: {fileID: 11400000, guid: f86679205dbfaad49b7a08d72a4f06f4, type: 2}
+        labelConfig: {fileID: 11400000, guid: 912766bed1c44554c970b473d80a3ec6, type: 2}
 --- !u!1 &1933212285
 GameObject:
   m_ObjectHideFlags: 0
