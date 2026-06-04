@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d0176327854820ab53adc46cbec7c1, type: 3}
+  m_Name: SemanticSegmentationLabelConfig
+  m_EditorClassIdentifier: Unity.Perception.Runtime::UnityEngine.Perception.GroundTruth.LabelManagement.SemanticSegmentationLabelConfig
+  m_LabelEntries:
+  - label: UAV
+    color: {r: 0, g: 0, b: 1, a: 1}
+  - label: Plane
+    color: {r: 0, g: 1, b: 0, a: 1}
+  - label: New Label_2
+    color: {r: 1, g: 0, b: 0, a: 1}
+  - label: New Label_3
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - label: New Label_4
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - label: New Label_5
+    color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  - label: New Label_6
+    color: {r: 1, g: 0.5863813, b: 0.27132714, a: 1}
+  - label: New Label_7
+    color: {r: 0.017028809, g: 0.9929444, b: 1, a: 1}
+  - label: New Label_8
+    color: {r: 0.4324351, g: 0.7768151, b: 1, a: 1}
+  - label: New Label_9
+    color: {r: 0.9510218, g: 0.3191839, b: 1, a: 1}
+  - label: New Label_10
+    color: {r: 0.048445046, g: 0.70985216, b: 1, a: 1}
+  - label: New Label_11
+    color: {r: 0.3759933, g: 1, b: 0.4844281, a: 1}
+  - label: New Label_12
+    color: {r: 1, g: 0.81808645, b: 0.4629227, a: 1}
+  skyColor: {r: 0, g: 0, b: 0, a: 1}
