@@ -8,10 +8,12 @@ public class UAVController : MonoBehaviour
     [SerializeField] private float moveForce = 150f;
     [SerializeField] private float rotationSpeed = 100f;
     [SerializeField] private float dragBase = 4f;
+
     [Header("Visual Settings")]
     [SerializeField] private Transform visualModel;
     [SerializeField] private float tiltAngle = 15f;
     [SerializeField] private float tiltSmoothness = 5f;
+
     [Header("Fan System")]
     [SerializeField] private FanRotation[] fans;
 
@@ -31,21 +33,30 @@ public class UAVController : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         SetActiveFans(true);
     }
 
     private void Update()
     {
         if (Keyboard.current == null || Mouse.current == null) return;
-        if (Keyboard.current.escapeKey.wasPressedThisFrame) Cursor.lockState = CursorLockMode.None;
-        if (Mouse.current.leftButton.wasPressedThisFrame) Cursor.lockState = CursorLockMode.Locked;
+
+        bool isHoldingRightClick = Mouse.current.rightButton.isPressed;
+        if (isHoldingRightClick)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            mouseX = Mouse.current.delta.x.ReadValue();
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            mouseX = 0f;
+        }
 
         float moveX = (Keyboard.current.dKey.isPressed ? 1f : 0f) - (Keyboard.current.aKey.isPressed ? 1f : 0f);
         float moveZ = (Keyboard.current.wKey.isPressed ? 1f : 0f) - (Keyboard.current.sKey.isPressed ? 1f : 0f);
         float moveY = Keyboard.current.spaceKey.isPressed ? 1f : Keyboard.current.leftShiftKey.isPressed ? -1f : 0f;
+
         moveInput = new Vector3(moveX, moveY, moveZ).normalized;
-        mouseX = (Cursor.lockState == CursorLockMode.Locked) ? Mouse.current.delta.x.ReadValue() : 0f;
         HandleVisualTilt();
     }
 
