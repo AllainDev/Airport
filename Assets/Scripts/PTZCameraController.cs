@@ -3,12 +3,11 @@ using UnityEngine.InputSystem;
 
 public class PTZCameraController : MonoBehaviour
 {
-    [Header("Rig Axes")]
     public Transform panAxis;   
     public Transform pitchAxis; 
     
     [Header("Hardware Constraints")]
-    public float lockedHeight = 25f;
+    public float lockedHeight = 100f;
     
     [Tooltip("Khóa cứng theo đúng yêu cầu đề bài")]
     public float minPitch = -60f;
@@ -17,14 +16,23 @@ public class PTZCameraController : MonoBehaviour
     [Header("PTZ Controls (For Testing)")]
     public float panSpeed = 20f;
     public float pitchSpeed = 20f;
+
+    [Header("Zoom Settings")]
+    public float zoomSpeed = 50f; 
+    public float minFOV = 10f;    
+    public float maxFOV = 60f;    
     
     // Bắt đầu ở góc ngẩng cao nhất có thể trong giới hạn cho phép
     private float currentPitch = -30f; 
+
+    private Camera[] childCameras;
     
     void Start()
     {
         currentPitch = Mathf.Clamp(currentPitch, minPitch, maxPitch);
         ApplyPitch();
+        
+        childCameras = GetComponentsInChildren<Camera>();
     }
     
     void LateUpdate()
@@ -58,11 +66,25 @@ public class PTZCameraController : MonoBehaviour
             currentPitch = Mathf.Clamp(currentPitch, minPitch, maxPitch);
             ApplyPitch();
         }
+
+        if (UnityEngine.InputSystem.Mouse.current != null)
+        {
+            float scroll = UnityEngine.InputSystem.Mouse.current.scroll.y.ReadValue();
+            
+            if (Mathf.Abs(scroll) > 0.01f) // Chỉ chạy nếu có lăn chuột
+            {
+                foreach (Camera cam in childCameras)
+                {
+                    float targetFOV = cam.fieldOfView - (scroll * zoomSpeed * Time.deltaTime);
+                    cam.fieldOfView = Mathf.Clamp(targetFOV, minFOV, maxFOV);
+                }
+            }
+        }
     }
 
     void ApplyPitch()
     {
-        // Đảo ngược trục để số âm (-60 đến -30) trở thành góc chúi xuống đất (60 đến 30 độ)
+        // Đảo ngược trục để số âm thành góc chúi xuống
         pitchAxis.localEulerAngles = new Vector3(-currentPitch, 0f, 0f);
     }
 }

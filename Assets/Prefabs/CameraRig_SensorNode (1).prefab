@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PTZCameraController
   panAxis: {fileID: 7594926940584693688}
   pitchAxis: {fileID: 7454801784050524256}
-  lockedHeight: 25
+  lockedHeight: 100
   minPitch: -60
   maxPitch: -30
   panSpeed: 20
