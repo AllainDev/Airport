@@ -9,9 +9,9 @@ public class PTZCameraController : MonoBehaviour
     [Header("Hardware Constraints")]
     public float lockedHeight = 100f;
     
-    [Tooltip("Khóa cứng theo đúng yêu cầu đề bài")]
-    public float minPitch = -60f;
-    public float maxPitch = -30f;
+    [Tooltip("Giới hạn góc gật gù (Pitch)")]
+    public float minPitch = -90f; // Góc cắm mặt xuống đất
+    public float maxPitch = 0f;   // Góc ngẩng ngang tầm mắt
     
     [Header("PTZ Controls (For Testing)")]
     public float panSpeed = 20f;
@@ -19,14 +19,26 @@ public class PTZCameraController : MonoBehaviour
 
     [Header("Zoom Settings")]
     public float zoomSpeed = 50f; 
-    public float minFOV = 10f;    
+    public float minFOV = 0.1f;    
     public float maxFOV = 60f;    
-    
-    // Bắt đầu ở góc ngẩng cao nhất có thể trong giới hạn cho phép
-    private float currentPitch = -30f; 
 
     private Camera[] childCameras;
-    
+
+    [Header("Smoothing (Làm mượt)")]
+    public float smoothTime = 0.2f; // Thời gian trễ tạo quán tính (mô-tơ)
+
+    // Biến lưu "Góc đích" (Camera sẽ lướt êm ái tới đây)
+    private float targetPan = 0f;
+    private float targetPitch = -30f;
+
+    // Biến lưu "Góc hiện tại" đang đứng
+    private float currentPan = 0f;
+    private float currentPitch = -30f;
+
+    // Biến gia tốc bắt buộc dùng cho hàm SmoothDamp của Unity
+    private float panVelocity = 0f;
+    private float pitchVelocity = 0f;
+
     void Start()
     {
         currentPitch = Mathf.Clamp(currentPitch, minPitch, maxPitch);
@@ -54,22 +66,32 @@ public class PTZCameraController : MonoBehaviour
             if (Keyboard.current.upArrowKey.isPressed) pitchInput = 1f; 
             if (Keyboard.current.downArrowKey.isPressed) pitchInput = -1f; 
         }
-        
+
+        //Smooth
+        // Thay vì cộng thẳng làm camera quay giật cục, ta cộng dồn vào "Góc đích"
+        targetPan += panInput * panSpeed * Time.deltaTime;
+        targetPitch += pitchInput * pitchSpeed * Time.deltaTime;
+        targetPitch = Mathf.Clamp(targetPitch, minPitch, maxPitch);
+        // 3. THUẬT TOÁN LÀM MƯỢT: Kéo thấu kính từ từ lướt tới "Góc đích"
+        currentPan = Mathf.SmoothDampAngle(currentPan, targetPan, ref panVelocity, smoothTime);
+        currentPitch = Mathf.SmoothDamp(currentPitch, targetPitch, ref pitchVelocity, smoothTime);
+
+
         if (panAxis != null)
         {
-            panAxis.Rotate(Vector3.up * panInput * panSpeed * Time.deltaTime);
+            // Ép góc quay bằng đúng góc currentPan đã làm mượt
+            panAxis.localEulerAngles = new Vector3(0f, currentPan, 0f);
         }
         
         if (pitchAxis != null)
         {
-            currentPitch += pitchInput * pitchSpeed * Time.deltaTime;
-            currentPitch = Mathf.Clamp(currentPitch, minPitch, maxPitch);
+            // Gọi hàm ApplyPitch để lấy currentPitch đã làm mượt áp dụng vào
             ApplyPitch();
         }
 
-        if (UnityEngine.InputSystem.Mouse.current != null)
+        if (Mouse.current != null)
         {
-            float scroll = UnityEngine.InputSystem.Mouse.current.scroll.y.ReadValue();
+            float scroll = Mouse.current.scroll.y.ReadValue();
             
             if (Mathf.Abs(scroll) > 0.01f) // Chỉ chạy nếu có lăn chuột
             {
@@ -86,5 +108,22 @@ public class PTZCameraController : MonoBehaviour
     {
         // Đảo ngược trục để số âm thành góc chúi xuống
         pitchAxis.localEulerAngles = new Vector3(-currentPitch, 0f, 0f);
+    }
+
+
+    // Hàm nhận dữ liệu góc từ AI Laser truyền sang
+    public void SetTargetAngle(float pan, float pitch)
+    {
+        targetPan = pan;
+        targetPitch = pitch;
+    }
+
+    // Hàm nhận lệnh Auto-Zoom từ AI Tracking
+    public void SetZoom(float fov)
+    {
+        foreach (Camera cam in childCameras)
+        {
+            cam.fieldOfView = Mathf.Clamp(fov, minFOV, maxFOV);
+        }
     }
 }

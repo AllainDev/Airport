@@ -2231,6 +2231,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1486638064234379292, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+      propertyPath: minFOV
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1515211333890471368, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
       propertyPath: field of view
       value: 27.921638
@@ -2310,7 +2314,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 529140757688796636, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1744127691}
   m_SourcePrefab: {fileID: 100100000, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
 --- !u!1 &107477347 stripped
 GameObject:
@@ -12691,6 +12698,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &668740724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 529140757688796636, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+  m_PrefabInstance: {fileID: 1439958799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &668740727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668740724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f1f8f354830942849e6bf3681bb71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraTracker
+  targetHeightOffset: 1.5
+  frameHeight: 25
+  maxZoomFOV: 35
 --- !u!1 &684031427
 GameObject:
   m_ObjectHideFlags: 0
@@ -24560,6 +24587,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &1326613962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 529140757688796636, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+  m_PrefabInstance: {fileID: 1793663435}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1326613965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326613962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f1f8f354830942849e6bf3681bb71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraTracker
+  targetHeightOffset: 1.5
+  frameHeight: 25
+  maxZoomFOV: 35
 --- !u!1001 &1329359508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25679,6 +25726,50 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2337688133955942190, guid: 2af5920477d486c4088d30dd49a17e3e, type: 3}
+--- !u!1 &1385095809 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 529140757688796636, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+  m_PrefabInstance: {fileID: 3477949580594622048}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1385095812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385095809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f1f8f354830942849e6bf3681bb71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraTracker
+  targetHeightOffset: 1.5
+  frameHeight: 25
+  maxZoomFOV: 35
+--- !u!114 &1385095815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385095809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9de9eb113f4bf43ba16baf09ee0cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NightVisionController
+--- !u!114 &1385095816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385095809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbe3630a715a2644bf8cdcd31911f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThermalVisionController
 --- !u!1001 &1393945396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26338,6 +26429,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1486638064234379292, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+      propertyPath: minFOV
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1515211333890471368, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
       propertyPath: field of view
       value: 27.921638
@@ -26421,7 +26516,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 529140757688796636, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 668740727}
   m_SourcePrefab: {fileID: 100100000, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
 --- !u!1001 &1449510353
 PrefabInstance:
@@ -30622,6 +30720,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4439735364738112, guid: c1a6213308e9d2a44bce4d03a2b8b6b4, type: 3}
   m_PrefabInstance: {fileID: 1475670793}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1744127688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 529140757688796636, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+  m_PrefabInstance: {fileID: 105438536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1744127691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744127688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188f1f8f354830942849e6bf3681bb71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraTracker
+  targetHeightOffset: 1.5
+  frameHeight: 25
+  maxZoomFOV: 35
 --- !u!1001 &1749427164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31790,6 +31908,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1486638064234379292, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+      propertyPath: minFOV
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1515211333890471368, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
       propertyPath: field of view
       value: 27.921638
@@ -31877,7 +31999,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 529140757688796636, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1326613965}
   m_SourcePrefab: {fileID: 100100000, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
 --- !u!1001 &1799057373
 PrefabInstance:
@@ -37096,6 +37221,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1486638064234379292, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+      propertyPath: minFOV
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486638064234379292, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+      propertyPath: maxPitch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486638064234379292, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+      propertyPath: minPitch
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486638064234379292, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -37190,7 +37327,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 529140757688796636, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1385095812}
+    - targetCorrespondingSourceObject: {fileID: 529140757688796636, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1385095815}
+    - targetCorrespondingSourceObject: {fileID: 529140757688796636, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1385095816}
   m_SourcePrefab: {fileID: 100100000, guid: 47ae09a24be236a42acc63e180fecea7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
