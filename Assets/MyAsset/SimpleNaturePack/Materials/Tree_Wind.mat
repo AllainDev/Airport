@@ -282,7 +282,7 @@ Material:
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
-    - _MBAmplitude: 1
+    - _MBAmplitude: 5
     - _MBAmplitudeOffset: 2
     - _MBDefaultBending: 0
     - _MBFrequency: 1.5
